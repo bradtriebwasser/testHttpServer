@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  </head>
+  <body>
+    <button id="fs">
+      requestFullscreen
+    </button> <br/>
+    <button id="fsp">
+      webkitRequestFullscreen
+    </button> <br/>
+      <button id="pp">
+      fullscreen Popup (https://google.com)
+    </button> <br/>
+     <button id="rp">
+      Regular Popup (https://google.com)
+    </button> <br/>
+       <button id="ppself">
+      fullscreen Popup (self origin)
+    </button> <br/>
+     <button id="rpself">
+      Regular Popup (self origin)
+    </button> <br/>
+    <script>
+      fs.addEventListener("click", () => {
+                          console.log("test");
+                            document.body.requestFullscreen();
+                          });
+     fsp.addEventListener("click", () => {
+                          console.log("test");
+                            document.body.webkitRequestFullscreen();
+                          });
+       pp.addEventListener("click", async () => {
+         await window.getScreenDetails();
+                       window.open("https://google.com", "_blank", "fullscreen,popup");
+        });
+       rp.addEventListener("click", async () => {
+                       window.open("https://google.com", "_blank", "popup");
+        });
+      ppself.addEventListener("click", async () => {
+         await window.getScreenDetails();
+                       window.open("http://localhost:5213", "_blank", "fullscreen,popup");
+        });
+       rpself.addEventListener("click", async () => {
+                       window.open("http://localhost:5213", "_blank", "popup");
+        });
+    </script>
+  </body>
+</html>
